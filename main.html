@@ -2,24 +2,28 @@
 	<head>
 		<!--Load the AJAX API-->
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/materialize.min.js"></script>
+
 		<script type="text/javascript" src="js/graphicsScripts.js"></script>
+		<script type="text/javascript" src="js/picker.js"></script>
+		<script type="text/javascript" src="js/picker_date.js"></script>
 		
 		<!--Import Google Icon Font-->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!--Import materialize.css-->
 		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+		<link type="text/css" rel="stylesheet" href="css/default.date.css">
+		<link type="text/css" rel="stylesheet" href="css/classic.date.css">
 
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-
-		<!--Import jQuery before materialize.js-->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/materialize.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
 			  $('select').material_select();
 			});
+
 		</script>	
 		<title>Harman Qro Metrics</title>
 	</head>
@@ -40,17 +44,38 @@
 			<br>
 			<div class="col s12 m4 l3"> 
 				<div class="row">
+
 			    <form class="col s12">
 			      
-   				<div class="input-field col s12">
-					   <select>
-					      <option value="" disabled selected>Project</option>
-					      <option value="1">GM MY18</option>
-					      <option value="2">GM MY19</option>
-					      <option value="3">Subaru</option>
-					   </select>
-					   <label>Filter by:</label>
-  					</div>
+   					<div class="file-field input-field">
+				      <div class="btn">
+				        <span>File</span>
+				        <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+				      </div>
+				      <div class="file-path-wrapper">
+				        <input class="file-path validate" type="text" >
+				      </div>
+				    </div>
+
+				    <p>
+						<input class="with-gap" name="graphipType" type="radio" id="General" onchange="DrawChart(this.id)" />
+						<label for="General">General</label>
+					</p>
+
+  					<p>
+						<input class="with-gap" name="graphipType" type="radio" id="CreatedBy" onchange="DrawChart(this.id)" />
+						<label for="CreatedBy">Created by</label>
+					</p>
+
+					<p>
+						<input class="with-gap" name="graphipType" type="radio" id="Domain" onchange="DrawChart(this.id)" />
+						<label for="Domain">Domain</label>
+					</p>
+
+					<p>
+						<input class="with-gap" name="graphipType" type="radio" id="Priority" onchange="DrawChart(this.id)"  />
+						<label for="Priority">Priority</label>
+					</p>
 
 			    </form>
 			  </div>
